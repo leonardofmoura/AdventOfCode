@@ -128,6 +128,8 @@ int main() {
 
     std::cout << "There are " << count << " valid passports\n";
 
+    passports.close();
+
     return 0;
 }
 

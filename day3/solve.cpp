@@ -42,5 +42,8 @@ int main() {
         << "\n> " << trees4 << "\n> " << trees5 << "\nTheir product is " 
         << trees1 * trees2 * trees3 * trees4 * trees5 << std::endl; 
 
+
+    mapFile.close();
+
     return 0;
 }
