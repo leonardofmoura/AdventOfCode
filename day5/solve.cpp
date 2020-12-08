@@ -3,27 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include <cmath>
-
-std::vector<std::string> read_strings(const std::string filename) {
-    std::fstream file;
-    file.open(filename,std::ios::in);
-
-    if (!file.is_open()) {
-        return {};
-    }
-
-    std::string str;
-    std::vector<std::string> res;
-
-    //read the file
-    while (std::getline(file, str)) {
-        res.push_back(str);
-    }
-
-    file.close();
-
-    return res;
-}
+#include "../lib/file_read.hpp"
 
 int get_seat_id(const std::string seat) {
     if (seat.length() != 10) {

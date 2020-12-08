@@ -1,27 +1,13 @@
 #include <iostream>
-#include <fstream>
 #include <string>
 #include <vector>
 #include <algorithm>
 #include <unordered_map>
+#include "../lib/file_read.hpp"
+
 
 int main() {
-    std::vector<int> entries;
-    std::string entryString;
-    int entry;
-    
-    std::fstream reportFile;
-    reportFile.open("report.txt",std::ios::in);
-
-    if (!reportFile.is_open()) {
-        return 1;
-    }
-
-    //read the file
-    while (std::getline(reportFile, entryString)) {
-        entry = std::stoi(entryString);
-        entries.push_back(entry);
-    }
+    std::vector<int> entries = read_integers("report.txt");
 
     //The algorithm itself
     std::sort(entries.begin(),entries.end()); //sort the array
@@ -77,5 +63,5 @@ int main() {
 
 
     std::cout << "Algorithm 2 ended\n";
-    reportFile.close();
+    return 0;
 }

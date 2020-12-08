@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <unordered_map>
 #include <regex>
+#include "../lib/file_read.hpp"
 
 //sorted array of valid fields
 std::vector<std::string> VALID_FIELDS = {"byr","ecl","eyr","hcl","hgt","iyr","pid"};
@@ -109,17 +110,9 @@ bool analyze_passport(std::string const& passport) {
 }
 
 int main() {
-    std::fstream passports;
-    passports.open("passports.txt",std::ios::in);
-
-    if (!passports.is_open()) {
-        return 1;
-    }
-
-    std::ostringstream out;
-    out << passports.rdbuf();
+    std::string str = read_to_string("passports.txt");
     
-    std::vector<std::string> passport_tokens = tokenize_string_multiple_char_delim(out.str(),"\n\n");
+    std::vector<std::string> passport_tokens = tokenize_string_multiple_char_delim(str,"\n\n");
     int count = 0;
 
     for (auto i : passport_tokens) {
@@ -127,8 +120,6 @@ int main() {
     }
 
     std::cout << "There are " << count << " valid passports\n";
-
-    passports.close();
 
     return 0;
 }
