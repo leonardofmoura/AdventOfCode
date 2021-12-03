@@ -1,0 +1,11 @@
+[package]
+name = "aoc_2021"
+version = "0.1.0"
+authors = ["Leonardo Moura <leofmoura17@gmail.com>"]
+edition = "2018"
+
+[lib]
+name = "lib"
+path = "src/lib.rs"
+
+[dependencies]
