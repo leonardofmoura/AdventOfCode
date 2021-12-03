@@ -12,13 +12,11 @@ where P: AsRef<Path>, {
 pub fn read_ints<P>(file: P) -> Vec<i32>
 where P: AsRef<Path>, {
     let lines = read_lines(file).unwrap();
-    let mut res: Vec<i32> = Vec::new();
+    lines.map(|l| l.unwrap().parse::<i32>().unwrap()).collect()
+}
 
-    for line in lines {
-        if let Ok(number) = line {
-            res.push(number.parse::<i32>().unwrap());
-        } 
-    }
-
-    res
+pub fn read_strings<P>(file: P) -> Vec<String> 
+where P: AsRef<Path>, {
+    let lines = read_lines(file).unwrap();
+    lines.map(|l| l.unwrap()).collect()
 }
