@@ -1,3 +1,10 @@
 # Advent of Code
 
-My solution to several advent of code challenges. (At least the ones I end up solving before getting too busy)
+My solution to several advent of code challenges (or at least the ones I end up solving before getting too busy).
+
+The languages I used in different years:
+
+| Year | Language |
+| ---- | -------- |
+| 2020 | C++      |
+| 2021 | Rust     |
