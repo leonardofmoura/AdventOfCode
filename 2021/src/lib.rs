@@ -20,3 +20,16 @@ where P: AsRef<Path>, {
     let lines = read_lines(file).unwrap();
     lines.map(|l| l.unwrap()).collect()
 }
+
+pub fn calc_binary(num: &String) -> i32 {
+    let mut res = 0;
+    let inv = num.chars().rev();
+
+    for (index, c) in inv.enumerate() {
+        if c == '1' {
+            res += 1 << index;
+        } 
+    }
+
+    res
+}
