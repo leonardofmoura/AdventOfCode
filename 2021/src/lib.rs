@@ -21,6 +21,12 @@ where P: AsRef<Path>, {
     lines.map(|l| l.unwrap()).collect()
 }
 
+pub fn read_line_ints<P>(file: P) -> Vec<i32>
+where P: AsRef<Path>, {
+    let lines = read_strings(file);
+    lines[0].split(",").map(|l| l.parse::<i32>().unwrap()).collect()
+}
+
 pub fn calc_binary(num: &String) -> i32 {
     let mut res = 0;
     let inv = num.chars().rev();
