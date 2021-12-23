@@ -27,6 +27,17 @@ where P: AsRef<Path>, {
     lines[0].split(",").map(|l| l.parse::<i32>().unwrap()).collect()
 }
 
+pub fn read_matrix<P>(file: P) -> Vec<Vec<i32>>
+where P: AsRef<Path>, {
+    let lines = read_strings(file);
+    let mut vec: Vec<Vec<i32>> = vec![];
+    for l in lines {
+        let sp = l.chars();
+        vec.push(sp.map(|l| l.to_digit(10).unwrap() as i32).collect());
+    }
+     vec
+}
+
 pub fn calc_binary(num: &String) -> i32 {
     let mut res = 0;
     let inv = num.chars().rev();
