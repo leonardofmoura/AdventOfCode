@@ -39,3 +39,21 @@ pub fn calc_binary(num: &String) -> i32 {
 
     res
 }
+
+pub fn sort_str(s : String) -> String {
+    let mut l: Vec<char> = s.to_owned().chars().collect();
+    l.sort_unstable();
+    l.into_iter().collect()
+}
+
+pub fn common_chars(s1: &String, s2: &String) -> i32 {
+    let mut counter = 0;
+
+    for c in s1.chars() {
+        if s2.find(c) != None {
+            counter += 1;
+        }
+    }
+
+    counter
+}
