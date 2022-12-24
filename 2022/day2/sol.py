@@ -38,12 +38,12 @@ def solve2():
     score = 0
 
     for l in lines:
-        game = l.split()
+        game = l.split(' ')
 
-        if (l[1] == 'Y'): # draw 
+        if (game[1] == 'Y'): # draw 
            score += map[game[0]] + 1 + 3 
 
-        elif (l[1] == 'Z'): # win 
+        elif (game[1] == 'Z'): # win 
             score += (map[game[0]] + 1) % 3 + 1 + 6
 
         else: # lose
