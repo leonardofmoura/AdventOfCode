@@ -7,13 +7,13 @@ def solve():
     s = 0
 
     for l in lines:
-        if (l == '\n'):
+        if (l == ''):
             gt.append(s) 
 
             s = 0
             continue
 
-        s += int(l[:-1])
+        s += int(l)
 
         gt.sort(reverse=True)
 
