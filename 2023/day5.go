@@ -40,20 +40,37 @@ func d5p1() {
     parseNewTable := false
     currTable := -1
     for i := 1; i < len(lines); i++ {
-        if lines[i] == "\n" {
+        if lines[i] == "" {
             parseNewTable = true
-            i+=2
+            i+=1
             currTable += 1
             continue
         } 
 
         if parseNewTable {
             tables = append(tables, Table{parseInterval(lines[i])}) 
+            fmt.Printf("New tale: %v\n",lines[i])
+            parseNewTable = false
         } else {
             tables[currTable] = append(tables[currTable], parseInterval(lines[i]))
         }
     }
 
+    locations := []string{}
+
+    // calculate seed location
+    for _,seed := range seeds {
+        curr_value,_ := strconv.Atoi(seed)
+        for _,table := range tables {
+            for _,interval := range table {
+                if curr_value >= interval.source && curr_value <=interval.source + interval.size - 1 {
+                    curr_value = curr_value-interval.dest+interval.size-1
+                    break
+                }
+            }
+        } 
+    }
+
     fmt.Printf("Seeds: %v\n",seeds)
-    fmt.Printf("Tables %v",len(tables))
+    fmt.Printf("Tables %v",tables)
 }
