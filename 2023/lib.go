@@ -36,7 +36,7 @@ func readFile(filename string) []string {
  	
 func readInts(filename string) [][]int {
     lines := readFile(filename)
-    find_digits := regexp.MustCompile(`\d+`)
+    find_digits := regexp.MustCompile(`-?\d+`)
     
     ret := [][]int{}
 
@@ -51,4 +51,13 @@ func readInts(filename string) [][]int {
     }
     
     return ret
+}
+
+
+func calcSum(arr []int) int {
+    acc := 0
+    for _,n := range arr {
+        acc += n
+    }
+    return acc
 }
